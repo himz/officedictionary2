@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.dev407.officedictionary2.R;
 import com.dev407.officedictionary2.fragments.PopularFragment.OnListFragmentInteractionListener;
-import com.dev407.officedictionary2.fragments.dummy.DummyContentPopular.DummyItem;
+import com.dev407.officedictionary2.models.dummy.DummyContentPopular.DummyItem;
 
 import java.util.List;
 
@@ -38,7 +38,6 @@ public class PopularRecyclerViewAdapter extends RecyclerView.Adapter<PopularRecy
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,19 +59,17 @@ public class PopularRecyclerViewAdapter extends RecyclerView.Adapter<PopularRecy
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
-        public final TextView mContentView;
         public DummyItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString()  + "'";
         }
     }
 }

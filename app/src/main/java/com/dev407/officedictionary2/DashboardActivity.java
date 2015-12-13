@@ -12,22 +12,21 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dev407.officedictionary2.R;
 import com.dev407.officedictionary2.fragments.PopularFragment;
 import com.dev407.officedictionary2.fragments.TrendingFragment;
 import com.dev407.officedictionary2.fragments.UpvotedFragment;
-import com.dev407.officedictionary2.fragments.dummy.DummyContent;
-import com.dev407.officedictionary2.fragments.dummy.DummyContentPopular;
-import com.dev407.officedictionary2.fragments.dummy.DummyContentUpvoted;
+import com.dev407.officedictionary2.models.dummy.DummyContent;
+import com.dev407.officedictionary2.models.dummy.DummyContentPopular;
+import com.dev407.officedictionary2.models.dummy.DummyContentUpvoted;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity  implements TrendingFragment.OnListFragmentInteractionListener, PopularFragment.OnListFragmentInteractionListener, UpvotedFragment.OnListFragmentInteractionListener {
 
@@ -126,6 +125,8 @@ public class DashboardActivity extends AppCompatActivity  implements TrendingFra
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -138,11 +139,11 @@ public class DashboardActivity extends AppCompatActivity  implements TrendingFra
             //return TrendingFragment.newInstance(position + 1);
             Log.d(TAG,"postion" + position);
             if(position == 0)
-                return TrendingFragment.newInstance(position + 1);
+                return TrendingFragment.newInstance(1, position + 1);
             else if(position == 1)
-                return PopularFragment.newInstance(position + 1);
+                return PopularFragment.newInstance(1, position + 1);
             else
-                return UpvotedFragment.newInstance(position + 1);
+                return UpvotedFragment.newInstance(1, position + 1);
         }
 
         @Override

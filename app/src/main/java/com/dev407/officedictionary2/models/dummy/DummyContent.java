@@ -1,4 +1,4 @@
-package com.dev407.officedictionary2.fragments.dummy;
+package com.dev407.officedictionary2.models.dummy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import java.util.Map;
  * <p/>
  * TODO: Replace all uses of this class before publishing your app.
  */
-public class DummyContentPopular {
+public class DummyContent {
 
     /**
      * An array of sample (dummy) items.

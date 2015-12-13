@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dev407.officedictionary2.R;
-import com.dev407.officedictionary2.fragments.dummy.DummyContent;
-import com.dev407.officedictionary2.fragments.dummy.DummyContent.DummyItem;
+import com.dev407.officedictionary2.models.dummy.DummyContent;
+import com.dev407.officedictionary2.models.dummy.DummyContent.DummyItem;
 import com.dev407.officedictionary2.views.adapters.TrendingRecyclerViewAdapter;
 
 /**
@@ -25,6 +25,7 @@ public class TrendingFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
+    private static final String ARG_SECTION_NUMBER = "section_number";
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
@@ -36,12 +37,32 @@ public class TrendingFragment extends Fragment {
     public TrendingFragment() {
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static TrendingFragment newInstance(int columnCount) {
-        TrendingFragment fragment = new TrendingFragment();
+    /**
+     * Supply no of columns to be used for new instance.
+     *
+     * @param columnCount
+     * @return
+     */
+    public static PopularFragment newInstance(int columnCount) {
+        PopularFragment fragment = new PopularFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    /**
+     * newInstance Overloaded function, to add section number too
+     *
+     * @param columnCount
+     * @param sectionNumber
+     * @return
+     */
+    public static PopularFragment newInstance(int columnCount, int sectionNumber) {
+        PopularFragment fragment = new PopularFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_COLUMN_COUNT, columnCount);
+        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
     }
