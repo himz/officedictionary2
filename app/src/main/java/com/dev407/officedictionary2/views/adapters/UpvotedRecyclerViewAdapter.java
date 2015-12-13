@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.dev407.officedictionary2.R;
 import com.dev407.officedictionary2.fragments.UpvotedFragment.OnListFragmentInteractionListener;
-import com.dev407.officedictionary2.fragments.dummy.DummyContent.DummyItem;
+import com.dev407.officedictionary2.fragments.dummy.DummyContentUpvoted.DummyItem;
 
 import java.util.List;
 

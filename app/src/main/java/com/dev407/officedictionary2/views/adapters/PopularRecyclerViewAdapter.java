@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.dev407.officedictionary2.R;
 import com.dev407.officedictionary2.fragments.PopularFragment.OnListFragmentInteractionListener;
-import com.dev407.officedictionary2.fragments.dummy.DummyContent.DummyItem;
+import com.dev407.officedictionary2.fragments.dummy.DummyContentPopular.DummyItem;
 
 import java.util.List;
 

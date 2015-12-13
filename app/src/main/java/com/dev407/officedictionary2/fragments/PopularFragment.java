@@ -11,10 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dev407.officedictionary2.R;
-import com.dev407.officedictionary2.fragments.dummy.DummyContent;
-import com.dev407.officedictionary2.fragments.dummy.DummyContent.DummyItem;
+import com.dev407.officedictionary2.fragments.dummy.DummyContentPopular;
+import com.dev407.officedictionary2.fragments.dummy.DummyContentPopular.DummyItem;
 import com.dev407.officedictionary2.views.adapters.PopularRecyclerViewAdapter;
-import com.dev407.officedictionary2.views.adapters.TrendingRecyclerViewAdapter;
 
 /**
  * A fragment representing a list of Items.
@@ -70,7 +69,7 @@ public class PopularFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new PopularRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new PopularRecyclerViewAdapter(DummyContentPopular.ITEMS, mListener));
         }
         return view;
     }
@@ -82,7 +81,6 @@ public class PopularFragment extends Fragment {
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
             // Send the event to the host activity
-            DummyContent dc = new DummyContent();
             mListener.onListFragmentInteraction(new DummyItem("1", "content1", "details1"));
 
         } else {

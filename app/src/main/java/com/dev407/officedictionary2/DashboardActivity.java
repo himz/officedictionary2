@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,10 +22,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dev407.officedictionary2.R;
+import com.dev407.officedictionary2.fragments.PopularFragment;
 import com.dev407.officedictionary2.fragments.TrendingFragment;
+import com.dev407.officedictionary2.fragments.UpvotedFragment;
 import com.dev407.officedictionary2.fragments.dummy.DummyContent;
+import com.dev407.officedictionary2.fragments.dummy.DummyContentPopular;
+import com.dev407.officedictionary2.fragments.dummy.DummyContentUpvoted;
 
-public class DashboardActivity extends AppCompatActivity  implements TrendingFragment.OnListFragmentInteractionListener {
+public class DashboardActivity extends AppCompatActivity  implements TrendingFragment.OnListFragmentInteractionListener, PopularFragment.OnListFragmentInteractionListener, UpvotedFragment.OnListFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -40,6 +45,8 @@ public class DashboardActivity extends AppCompatActivity  implements TrendingFra
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+
+    private static final String TAG = "DashboardActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,13 +102,23 @@ public class DashboardActivity extends AppCompatActivity  implements TrendingFra
 
     @Override
     public void onListFragmentInteraction(DummyContent.DummyItem item) {
-        toast("Dummy Content got" + item.id + item.content + item.details);
+        toast("Dummy Trending Content got" + item.id + item.content + item.details);
     }
 
     private void toast(String text) {
         Toast.makeText(this,
                 String.format("Item clicked: %s", text), Toast.LENGTH_SHORT)
                 .show();
+    }
+
+    @Override
+    public void onListFragmentInteraction(DummyContentPopular.DummyItem item) {
+        toast("Dummy Popular Content got" + item.id + item.content + item.details);
+    }
+
+    @Override
+    public void onListFragmentInteraction(DummyContentUpvoted.DummyItem item) {
+        toast("Dummy Upvoted Content got" + item.id + item.content + item.details);
     }
 
     /**
@@ -118,7 +135,14 @@ public class DashboardActivity extends AppCompatActivity  implements TrendingFra
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return TrendingFragment.newInstance(position + 1);
+            //return TrendingFragment.newInstance(position + 1);
+            Log.d(TAG,"postion" + position);
+            if(position == 0)
+                return TrendingFragment.newInstance(position + 1);
+            else if(position == 1)
+                return PopularFragment.newInstance(position + 1);
+            else
+                return UpvotedFragment.newInstance(position + 1);
         }
 
         @Override
@@ -131,11 +155,11 @@ public class DashboardActivity extends AppCompatActivity  implements TrendingFra
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "Trending";
                 case 1:
-                    return "SECTION 2";
+                    return "Popular";
                 case 2:
-                    return "SECTION 3";
+                    return "Upvoted";
             }
             return null;
         }

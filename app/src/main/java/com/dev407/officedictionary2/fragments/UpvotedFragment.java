@@ -11,9 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dev407.officedictionary2.R;
-import com.dev407.officedictionary2.fragments.dummy.DummyContent;
-import com.dev407.officedictionary2.fragments.dummy.DummyContent.DummyItem;
-import com.dev407.officedictionary2.views.adapters.TrendingRecyclerViewAdapter;
+import com.dev407.officedictionary2.fragments.dummy.DummyContentUpvoted;
+import com.dev407.officedictionary2.fragments.dummy.DummyContentUpvoted.DummyItem;
 import com.dev407.officedictionary2.views.adapters.UpvotedRecyclerViewAdapter;
 
 /**
@@ -70,7 +69,7 @@ public class UpvotedFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new UpvotedRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new UpvotedRecyclerViewAdapter(DummyContentUpvoted.ITEMS, mListener));
         }
         return view;
     }
@@ -82,7 +81,7 @@ public class UpvotedFragment extends Fragment {
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
             // Send the event to the host activity
-            DummyContent dc = new DummyContent();
+
             mListener.onListFragmentInteraction(new DummyItem("1", "content1", "details1"));
 
         } else {
