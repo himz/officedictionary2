@@ -18,7 +18,7 @@ import com.dev407.officedictionary2.views.adapters.TrendingRecyclerViewAdapter;
 /**
  * A fragment representing a list of Items.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the {@link OnTrendingFragmentInteractionListener}
  * interface.
  */
 public class TrendingFragment extends Fragment {
@@ -28,7 +28,7 @@ public class TrendingFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
+    private OnTrendingFragmentInteractionListener mListener;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -40,11 +40,11 @@ public class TrendingFragment extends Fragment {
     /**
      * Supply no of columns to be used for new instance.
      *
-     * @param columnCount
-     * @return
+     * @param columnCount Number of columns in the grid. If 1, its linear layout
+     * @return Trending Fragment
      */
-    public static PopularFragment newInstance(int columnCount) {
-        PopularFragment fragment = new PopularFragment();
+    public static TrendingFragment newInstance(int columnCount) {
+        TrendingFragment fragment = new TrendingFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -54,12 +54,12 @@ public class TrendingFragment extends Fragment {
     /**
      * newInstance Overloaded function, to add section number too
      *
-     * @param columnCount
-     * @param sectionNumber
-     * @return
+     * @param columnCount Number of columns in the grid. If 1, its linear layout
+     * @param sectionNumber section number of the fragment
+     * @return Trending Fragment
      */
-    public static PopularFragment newInstance(int columnCount, int sectionNumber) {
-        PopularFragment fragment = new PopularFragment();
+    public static TrendingFragment newInstance(int columnCount, int sectionNumber) {
+        TrendingFragment fragment = new TrendingFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -99,15 +99,14 @@ public class TrendingFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnTrendingFragmentInteractionListener) {
+            mListener = (OnTrendingFragmentInteractionListener) context;
             // Send the event to the host activity
-            DummyContent dc = new DummyContent();
-            mListener.onListFragmentInteraction(new DummyItem("1", "content1", "details1"));
+            mListener.onTrendingFragmentInteraction(new DummyItem("1trending", "content1trending", "details1"));
 
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+                    + " must implement OnTrendingFragmentInteractionListener");
         }
     }
 
@@ -127,8 +126,8 @@ public class TrendingFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnListFragmentInteractionListener {
+    public interface OnTrendingFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onTrendingFragmentInteraction(DummyItem item);
     }
 }

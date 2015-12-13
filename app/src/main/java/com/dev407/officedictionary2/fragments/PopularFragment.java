@@ -18,7 +18,7 @@ import com.dev407.officedictionary2.views.adapters.PopularRecyclerViewAdapter;
 /**
  * A fragment representing a list of Items.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the {@link OnPopularFragmentInteractionListener}
  * interface.
  */
 public class PopularFragment extends Fragment {
@@ -28,7 +28,7 @@ public class PopularFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
+    private OnPopularFragmentInteractionListener mListener;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -99,14 +99,14 @@ public class PopularFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnPopularFragmentInteractionListener) {
+            mListener = (OnPopularFragmentInteractionListener) context;
             // Send the event to the host activity
-            mListener.onListFragmentInteraction(new DummyItem("1", "content1", "details1"));
+            mListener.onPopularFragmentInteraction(new DummyItem("1popular", "content1popular", "details1"));
 
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+                    + " must implement OnPopularFragmentInteractionListener");
         }
     }
 
@@ -126,8 +126,8 @@ public class PopularFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnListFragmentInteractionListener {
+    public interface OnPopularFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onPopularFragmentInteraction(DummyItem item);
     }
 }

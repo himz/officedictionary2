@@ -18,7 +18,7 @@ import com.dev407.officedictionary2.views.adapters.UpvotedRecyclerViewAdapter;
 /**
  * A fragment representing a list of Items.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the {@link OnUpvotedFragmentInteractionListener}
  * interface.
  */
 public class UpvotedFragment extends Fragment {
@@ -28,7 +28,7 @@ public class UpvotedFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
+    private OnUpvotedFragmentInteractionListener mListener;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -43,8 +43,8 @@ public class UpvotedFragment extends Fragment {
      * @param columnCount
      * @return
      */
-    public static PopularFragment newInstance(int columnCount) {
-        PopularFragment fragment = new PopularFragment();
+    public static UpvotedFragment newInstance(int columnCount) {
+        UpvotedFragment fragment = new UpvotedFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -58,8 +58,8 @@ public class UpvotedFragment extends Fragment {
      * @param sectionNumber
      * @return
      */
-    public static PopularFragment newInstance(int columnCount, int sectionNumber) {
-        PopularFragment fragment = new PopularFragment();
+    public static UpvotedFragment newInstance(int columnCount, int sectionNumber) {
+        UpvotedFragment fragment = new UpvotedFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -99,15 +99,14 @@ public class UpvotedFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof OnUpvotedFragmentInteractionListener) {
+            mListener = (OnUpvotedFragmentInteractionListener) context;
             // Send the event to the host activity
-
-            mListener.onListFragmentInteraction(new DummyItem("1", "content1", "details1"));
+            mListener.onUpvotedFragmentInteraction(new DummyItem("1upvoted", "content1upvoted", "details1"));
 
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+                    + " must implement OnUpvotedFragmentInteractionListener");
         }
     }
 
@@ -127,8 +126,8 @@ public class UpvotedFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnListFragmentInteractionListener {
+    public interface OnUpvotedFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onUpvotedFragmentInteraction(DummyItem item);
     }
 }

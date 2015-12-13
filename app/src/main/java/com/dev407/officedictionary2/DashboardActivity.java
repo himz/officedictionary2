@@ -28,7 +28,7 @@ import com.dev407.officedictionary2.models.dummy.DummyContentUpvoted;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DashboardActivity extends AppCompatActivity  implements TrendingFragment.OnListFragmentInteractionListener, PopularFragment.OnListFragmentInteractionListener, UpvotedFragment.OnListFragmentInteractionListener {
+public class DashboardActivity extends AppCompatActivity  implements TrendingFragment.OnTrendingFragmentInteractionListener, PopularFragment.OnPopularFragmentInteractionListener, UpvotedFragment.OnUpvotedFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -100,7 +100,7 @@ public class DashboardActivity extends AppCompatActivity  implements TrendingFra
     }
 
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+    public void onTrendingFragmentInteraction(DummyContent.DummyItem item) {
         toast("Dummy Trending Content got" + item.id + item.content + item.details);
     }
 
@@ -111,12 +111,12 @@ public class DashboardActivity extends AppCompatActivity  implements TrendingFra
     }
 
     @Override
-    public void onListFragmentInteraction(DummyContentPopular.DummyItem item) {
+    public void onPopularFragmentInteraction(DummyContentPopular.DummyItem item) {
         toast("Dummy Popular Content got" + item.id + item.content + item.details);
     }
 
     @Override
-    public void onListFragmentInteraction(DummyContentUpvoted.DummyItem item) {
+    public void onUpvotedFragmentInteraction(DummyContentUpvoted.DummyItem item) {
         toast("Dummy Upvoted Content got" + item.id + item.content + item.details);
     }
 
