@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.dev407.officedictionary2.R;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

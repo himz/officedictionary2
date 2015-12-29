@@ -31,3 +31,12 @@ proguard/
 # Android Studio captures folder
 captures/
 
+# Android Studio GitIgnore
+.gradle
+/local.properties
+/.idea/*
+.DS_Store
+/build
+*.iml
+.idea
+~       
